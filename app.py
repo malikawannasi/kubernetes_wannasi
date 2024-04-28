@@ -1,5 +1,5 @@
 from flask import Flask
-from werkzeug.utils import url_quote
+from urllib.parse import quote as url_quote
 
 app = Flask(__name__)
 
