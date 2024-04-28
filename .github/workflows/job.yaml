@@ -31,11 +31,11 @@ jobs:
         uses: actions/checkout@v2
 
       # Ajouter l'étape de configuration Kubernetes
-      - name: Configure Kubernetes
-        run: echo "${{ secrets.KUBE_CONFIG_DATA }}" > kubeconfig.yaml
+     # - name: Configure Kubernetes
+     #   run: echo "${{ secrets.KUBE_CONFIG_DATA }}" > kubeconfig.yaml
         # Configure l'outil kubectl pour utiliser le fichier kubeconfig
-        env:
-          KUBECONFIG: kubeconfig.yaml
+       # env:
+      #    KUBECONFIG: kubeconfig.yaml
       
       # Apply Kubernetes manifests
       - name: Apply Kubernetes manifests
@@ -43,5 +43,5 @@ jobs:
           kubectl apply --validate=false -f deployment.yaml
           kubectl apply --validate=false -f service.yaml
           kubectl apply --validate=false -f networkpolicy.yaml
-        env:
-          KUBECONFIG: kubeconfig.yaml
+       # env:
+        #  KUBECONFIG: kubeconfig.yaml
