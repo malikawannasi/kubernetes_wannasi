@@ -38,9 +38,10 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "80"
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 5000
 
 podAnnotations:
   example-annotation: "value"
@@ -54,6 +55,7 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
 
 resources:
   limits:
