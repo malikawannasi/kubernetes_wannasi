@@ -2,6 +2,13 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: hello-world-hpa
+  labels:
+    app.kubernetes.io/managed-by: Helm
+
+  annotations:
+    meta.helm.sh/release-name: hello-world-installation
+    meta.helm.sh/release-namespace: default
+
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

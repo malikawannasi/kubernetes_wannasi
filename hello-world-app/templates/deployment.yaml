@@ -1,7 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-deployment
+  name: hello-world-deployment  # Add the deployment name here
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-name: hello-world-installation
+    meta.helm.sh/release-namespace: default
+
 spec:
   replicas: 2
   selector:
