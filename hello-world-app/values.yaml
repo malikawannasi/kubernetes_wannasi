@@ -39,9 +39,9 @@ securityContext: {}
 
 service:
   type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 5000
+  externalPort: 80
+  internalPort: 8005
+
 
 podAnnotations:
   example-annotation: "value"
