@@ -27,20 +27,34 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Change directory to the location of the Kubernetes manifests
-     # - name: Change directory to templates
-     #   run: cd hello-world-app/templates
+    # Setup Kubernetes credentials and context (if needed)
+    # Uncomment the following lines and use the appropriate action for your cloud provider
+    # - name: Set up Kubernetes credentials
+    #   uses: azure/login@v1
+    #   with:
+    #     creds: ${{ secrets.AZURE_CREDENTIALS }}
+    #     enable-AKS: true
+    #   # For Google Cloud, use google-github-actions/get-gke-credentials@v0
 
-      # Apply Kubernetes manifests
+    # Change directory to the location of the Kubernetes manifests
+      - name: Change directory to templates
+        working-directory: hello-world-app/templates
+        run: echo "Changed to templates directory"
+
+    # Apply Kubernetes manifests
       - name: Apply Kubernetes manifests
+        working-directory: hello-world-app/templates
         run: |
+          echo "Applying Kubernetes manifests..."
           kubectl get pods
           kubectl get all
           kubectl get namespaces
           kubectl apply --validate=false -f deployment.yaml
           kubectl apply --validate=false -f service.yaml
           kubectl apply --validate=false -f networkpolicy.yaml
-  
+          echo "Manifests applied successfully."
+
