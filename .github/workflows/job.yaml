@@ -37,6 +37,9 @@ jobs:
       # Apply Kubernetes manifests
       - name: Apply Kubernetes manifests
         run: |
+          kubectl get pods
+          kubectl get all
+          kubectl get namespaces
           kubectl apply --validate=false -f deployment.yaml
           kubectl apply --validate=false -f service.yaml
           kubectl apply --validate=false -f networkpolicy.yaml
