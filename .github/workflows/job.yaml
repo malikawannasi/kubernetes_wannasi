@@ -31,8 +31,8 @@ jobs:
         uses: actions/checkout@v2
 
       # Change directory to the location of the Kubernetes manifests
-      - name: Change directory to templates
-        run: cd hello-world-app/templates
+     # - name: Change directory to templates
+     #   run: cd hello-world-app/templates
 
       # Apply Kubernetes manifests
       - name: Apply Kubernetes manifests
