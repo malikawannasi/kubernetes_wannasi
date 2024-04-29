@@ -9,22 +9,26 @@ Voici un guide étape par étape pour conteneuriser une application, déployer l
 
     ```Dockerfile
     # Utilisez une image de base de Python
-    FROM python:3.10-slim
+    FROM python:3.9
+    LABEL authors="wannasi_malika"
 
-    # Définissez le répertoire de travail dans le conteneur
+    # Set the working directory in the container
     WORKDIR /app
 
-    # Copiez les fichiers de l'application dans le répertoire de travail
-    COPY . /app
+   # Copy the requirements file into the working directory
+   COPY requirements.txt /app
 
-    # Installez les dépendances de l'application
-    RUN pip install -r requirements.txt
+   # Install the dependencies
+   RUN pip install --no-cache-dir -r requirements.txt
 
-    # Exposez le port sur lequel votre application écoutera les demandes
-    EXPOSE 5000
+  # Copy the current directory contents into the container at /app
+   COPY . /app
 
-    # Commande de lancement de l'application
-    CMD ["python", "app.py"]
+  # Expose the port that the application will listen on
+   EXPOSE 5000
+
+  # Command to run the application
+   CMD ["python", "app.py"]
     ```
 
 ### 1.2 Construisez l'image Docker
