@@ -46,15 +46,15 @@ jobs:
         run: echo "Changed to templates directory"
 
     # Apply Kubernetes manifests
-      - name: Apply Kubernetes manifests
-        working-directory: hello-world-app/templates
-        run: |
-          echo "Applying Kubernetes manifests..."
-          kubectl get pods
-          kubectl get all
-          kubectl get namespaces
-          kubectl apply --validate=false -f deployment.yaml
-          kubectl apply --validate=false -f service.yaml
-          kubectl apply --validate=false -f networkpolicy.yaml
-          echo "Manifests applied successfully."
+        # - name: Apply Kubernetes manifests
+        #  working-directory: hello-world-app/templates
+          #   run: |
+          #    echo "Applying Kubernetes manifests..."
+          #    kubectl get pods
+          #   kubectl get all
+          #  kubectl get namespaces
+          #  kubectl apply --validate=false -f deployment.yaml
+          #  kubectl apply --validate=false -f service.yaml
+          # kubectl apply --validate=false -f networkpolicy.yaml
+        # echo "Manifests applied successfully."
 
