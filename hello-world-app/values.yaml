@@ -7,7 +7,7 @@ replicaCount: 2
 image:
   repository: malikawannasifreelance/helloworldapp:latest
   pullPolicy: Always
-  tag: "v1.0"
+  #tag: "v1.0"
 
 imagePullSecrets: []
 nameOverride: ""

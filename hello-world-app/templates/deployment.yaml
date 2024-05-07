@@ -1,13 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-deployment  # Add the deployment name here
+  name: hello-world-deployment
   labels:
     app.kubernetes.io/managed-by: Helm
   annotations:
     meta.helm.sh/release-name: hello-world-installation
     meta.helm.sh/release-namespace: default
-
 spec:
   replicas: 2
   selector:
@@ -25,20 +24,24 @@ spec:
             - containerPort: 5000
           resources:
             requests:
-              cpu: "100m"  # 100 milli-CPU
-              memory: "128Mi"  # 128 MiB of memory
+              cpu: "100m"
+              memory: "128Mi"
             limits:
-              cpu: "500m"  # 500 milli-CPU
-              memory: "256Mi"  # 256 MiB of memory
+              cpu: "500m"
+              memory: "256Mi"
           livenessProbe:
             httpGet:
               path: /health
               port: 5000
             initialDelaySeconds: 10
             periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /health
               port: 5000
             initialDelaySeconds: 5
             periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
