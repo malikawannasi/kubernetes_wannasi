@@ -18,7 +18,7 @@ spec:
     - from:
         - podSelector:
             matchLabels:
-              app: allowed-source-app  # Define the source pod/app allowed to communicate with your app
+              app: hello-world
         - ipBlock:
             cidr: 192.168.1.0/24  # Define the allowed IP range
       ports:
